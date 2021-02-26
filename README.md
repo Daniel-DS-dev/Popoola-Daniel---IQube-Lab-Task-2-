@@ -20,17 +20,17 @@ Output a single integer, the number of faces spotted in the provided image.
 
 
 ## Solution
-### Discuss in detail how you solved the problem.
+### 2. Discuss in detail how you solved the problem.
 * Note that I also discussed in details the solution to the task inside the notebook itself alongside the code., so you can follow the explanation better there since you can see the programs/code and the explanation at the same time.
 
 
-* The task is to count the number of faces in particular images, I was provided with 3 images that have been converted to 2D grids of pixel values. The 2D grid of pixel value of each image was provided in seperate text files.
+* The task is to count the number of faces in particular images, I was provided with 3 images that have been converted to 2D grids of pixel values. The 2D grid of pixel value of each image was provided in separate text files.
 To count the number of faces in each image, I had to first convert each image back to it's image form or array form before it can be usable on any deep learning or machine learning model.
 The first thing I did was to read in the image data of each image into my notebook, using Python's function, 'open()'. Using this function, I read in image data from each text file line by line. I created 3 different lists for each image data named: 'img1', 'img2' and 'img3'.
 
 
 * The image data I read in was read in regular text format, so I had to convert it back into it's original image format (The images were originally in JPG or PNG formats). Then I will build a model to detect the number of faces in each image.
-* I will read the text document in line by line, and store them in seperate lists, then I will write a function to clean each image data. 
+* I will read the text document in line by line, and store them in separate lists, then I will write a function to clean each image data. 
 
 
 * The image data of each image are stored in three different text files named: 'input00.txt', input01.txt' and 'input02.txt'
@@ -47,7 +47,7 @@ The first thing I did was to read in the image data of each image into my notebo
 * The first file has 418 rows and has 870 pixels per row, the second image has 173 rows and 291 pixels per row, and the third image contains 288 rows and 460 pixels per row
 
 
-* I then removed the first line of each list, and stored them in seperate lists, so my image data lists now had only the pixel values of their image.
+* I then removed the first line of each list, and stored them in separate lists, so my image data lists now had only the pixel values of their image.
 * Then I cleaned up each image data, and stored each cleaned data in a numpy array in a format that can be viewed as an image.
 * The final image array of each image will be a rank3 array, which will have a shape in the form of (x1, x2, 3)
 * Where x1 = number of rows
@@ -56,10 +56,10 @@ The first thing I did was to read in the image data of each image into my notebo
 * E.g. the shape of the first image after cleaning should be (418, 870, 3)
 * To get a rank3 array from a list, the list has to have 2 nested lists within it. (a list of lists of lists)
 
-* Since our data was read-in in string format, All the pixels in each row of our image data is stored as a string value which contains pixels seperated by a space as a delimiter. i.e. for row 1 in image 1 we have '2, 6, 184 .... 1, 10, 151'
+* Since our data was read-in in string format, All the pixels in each row of our image data is stored as a string value which contains pixels separated by a space as a delimiter. i.e. for row 1 in image 1 we have '2, 6, 184 .... 1, 10, 151'
 * Remember, each pixel is represented by three comma-separated values denoting the Blue, Green, and Red components (3 colour channels) respectively. The first pixel in the first row of the first image is '2,6,184'
 * I needed to store each pixel in it's own list, and then each row will contain all the pixels in that row in a single list, and then all the rows in that image will be stored in another single list.
-E.g. The first image has 418 rows, and 870 pixels per row. Each 870 pixels per row will stored in seperate lists i.e. we will have 870 lists in each row, and then each 418 rows containing 870 lists each which will be stored in a single list. And that way we have a list of lists (418 lists) of lists(870 lists). i.e. the first row of the first image should look like: [[2, 6, 184] ... [1, 10, 151]]
+E.g. The first image has 418 rows, and 870 pixels per row. Each 870 pixels per row will stored in separate lists i.e. we will have 870 lists in each row, and then each 418 rows containing 870 lists each which will be stored in a single list. And that way we have a list of lists (418 lists) of lists(870 lists). i.e. the first row of the first image should look like: [[2, 6, 184] ... [1, 10, 151]]
 
 
 * Then I wrote a function, **'clean_image_data_list'** to clean all the image data, i.e remove unwanted space, put them in the wanted format, etc.
@@ -98,3 +98,13 @@ Then I applied both functions to the images, and printed out the number of faces
 * The  first picture has 2 faces in it
 * The second picture has 3 faces in it, and 
 * The third image has 5 faces in it.
+
+
+
+### 3. Are there other ways the problem could be solved? Discuss briefly
+Yes, there are other ways the problem could have beens solved.
+In terms of the model used to count the number of faces:
+     a. Instead of using a pretrained model, we could build a model from scratch, we will gather tens to hundreds of thousands of images of different faces at different angles under different conditions, and train a neural network using this data, calculate the loss and optimize the model until it is good enough to be deployed.
+
+     b.	Another way I could have solved it is to use other pretrained models to detect the number of faces. Examples of other pretrained models are:The pretrained model in OpenCV’s library that makes use of Haarcascades, or the HOG (Histogram of Oriented Gradients) model from the ‘dlib’ module, or the CNN face detection model also from the ‘dlib’ module.
+I could have also used cv2’s DNN model.

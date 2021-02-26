@@ -1,7 +1,10 @@
 # Popoola-Daniel---iQube-Lab-Task-2-
 
 * This is my solution to the iQube Lab's Task 2
+* The full code and explanation can be found in the notebook titled 'Popoola Daniel iQube Researchers Engineer Task 2.ipynb' which can be found in this repository.
+* Other files I included are the input files containining the image data, all are in the folder named 'input', and this 'README.md' file
 
+#Question/Problem
 ## How many faces?
 You are provided with images of people at meetings, gatherings, group photos, etc. Count the number of faces you can spot in each image. There will be no more than 15 faces in each of the images. Assume that half or more of each face will be visible.
 Here are the first three images corresponding to the 3 sample test cases which will be provided

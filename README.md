@@ -98,12 +98,3 @@ Then I applied both functions to the images, and printed out the number of faces
 * The  first picture has 2 faces in it
 * The second picture has 3 faces in it, and 
 * The third image has 5 faces in it.
-
-
-
-
-
-
-
-
-s to the 3 images and printed out a single integer value, the number of faces in each image.

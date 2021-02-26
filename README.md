@@ -104,7 +104,5 @@ Then I applied both functions to the images, and printed out the number of faces
 ### 3. Are there other ways the problem could be solved? Discuss briefly
 Yes, there are other ways the problem could have beens solved.
 In terms of the model used to count the number of faces:
-     a. Instead of using a pretrained model, we could build a model from scratch, we will gather tens to hundreds of thousands of images of different faces at different angles under different conditions, and train a neural network using this data, calculate the loss and optimize the model until it is good enough to be deployed.
-
-     b.	Another way I could have solved it is to use other pretrained models to detect the number of faces. Examples of other pretrained models are:The pretrained model in OpenCV’s library that makes use of Haarcascades, or the HOG (Histogram of Oriented Gradients) model from the ‘dlib’ module, or the CNN face detection model also from the ‘dlib’ module.
-I could have also used cv2’s DNN model.
+* Instead of using a pretrained model, we could build a model from scratch, we will gather tens to hundreds of thousands of images of different faces at different angles under different conditions, and train a neural network using this data, calculate the loss and optimize the model until it is good enough to be deployed.
+* Another way I could have solved it is to use other pretrained models to detect the number of faces. Examples of other pretrained models are:The pretrained model in OpenCV’s library that makes use of Haarcascades, The HOG (Histogram of Oriented Gradients) model from the ‘dlib’ module, or the CNN face detection model also from the ‘dlib’ module, The cv2’s DNN model, etc.

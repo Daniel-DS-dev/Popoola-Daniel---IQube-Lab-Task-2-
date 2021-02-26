@@ -18,6 +18,9 @@ Output a single integer, the number of faces spotted in the provided image.
 
 ## Solution
 ### Discuss in detail how you solved the problem.
+* Note that I also explained in details the solution to the task in the notebook, so you can follow the explanation better there since you can see the programs and the explanation at the same time.
+
+
 * The task is to count the number of faces in particular images, I was provided with 3 images that have been converted to 2D grids of pixel values. The 2D grid of pixel value of each image was provided in seperate text files.
 * To count the number of faces in each image, I had to first convert each image back to it's image form or array form before it can be usable on any deep learning or machine learning model.
 * The first thing I did was to read in the image data of each image into my notebook, using Python's function, 'open()'. Using this function, I read in image data from each text file line by line. I created 3 different lists for each image data named: 'img1', 'img2' and 'img3'.
@@ -54,3 +57,25 @@ Output a single integer, the number of faces spotted in the provided image.
 * Remember, each pixel is represented by three comma-separated values denoting the Blue, Green, and Red components (3 colour channels) respectively. The first pixel in the first row of the first image is '2,6,184'
 * I needed to store each pixel in it's own list, and then each row will contain all the pixels in that row in a single list, and then all the rows in that image will be stored in another single list.
 E.g. The first image has 418 rows, and 870 pixels per row. Each 870 pixels per row will stored in seperate lists i.e. we will have 870 lists in each row, and then each 418 rows containing 870 lists each which will be stored in a single list. And that way we have a list of lists (418 lists) of lists(870 lists). i.e. the first row of the first image should look like: [[2, 6, 184] ... [1, 10, 151]]
+
+
+* Then I wrote a function, 'clean_image_data_list' to clean all the image data, i.e remove unwanted space, put them in the wanted format, etc.
+* After which I checked to make sure I still had the same number of rows for each image data that I shoud have.
+
+
+* Then I converted each image data list into numpy arrays, and changed their data type to 'uint8'
+The data type 'uint8' can be described as: Unsigned integer (0 to 255)
+Our pixel values will be in the range 0 to 255, so the data type 'uint8' is perfect for us.
+Now I will convert it to a numpy array with datatype of 'uint8' which is the datatype for image data.
+
+* After converting into numpy arrays, my image data is now in the right format, and I visualized each image using 'matplotlib' and cv2 'module'
+The input format of the images's color channels were in the BGR (Blue Green Red) format instead of RGB (Red Green Blue), so I changed the format to RGB and my images were now in the right formats and ready to be applied to a face detection model.
+
+
+### Face Detection Model.
+* The main task here is to count the number of faces in each picture.
+As a human, I can see that we have 2 faces in the first picture, 3 images in the second picture, and 5 pictures in the 3rd picture, but a computer doesn't know this. Computer Vision is the field of data science where we teach computers to see images, and the world at large like a human does.
+For a computer to see the world like humans, we feed it lots of image data, depending on the object we want it to see.
+Here we want the computer to count the number of faces, ideally we will get lot's of human faces and feed them into a machine learning or deep learning model preferably deep learning because we get to use things like Neural Networks which can learn from hundreds of thousands of data.
+I don't have any training data for the task at hand, and getting them would take a while, so I am gonna use an a pretrained model to detect the faces in each of our pictures.
+The pretrained model I am going to use is the Multitask Cascaded Convolutional Neural Network (mtcnn)

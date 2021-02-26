@@ -40,3 +40,17 @@ Output a single integer, the number of faces spotted in the provided image.
 * So we can see the first pixel is '2, 6, 184', and the last pixel is '1, 10, 151', and then another space ('\n')
 * The first file has 418 rows and has 870 pixels per row, the second image has 173 rows and 291 pixels per row, and the third image contains 288 rows and 460 pixels per row
 
+
+* I then removed the first line of each list, and stored them in seperate lists, so my image data lists now had only the pixel values of their image.
+* Then I cleaned up each image data, and stored each cleaned data in a numpy array in a format that can be viewed as an image.
+* The final image array of each image will be a rank3 array, which will have a shape in the form of (x1, x2, 3)
+* Where x1 = number of rows
+      * x2 = number of columns, or number of pixels per row in each image and
+       * 3 is the number of color channels in our array.
+* E.g. the shape of the first image after cleaning should be (418, 870, 3)
+* To get a rank3 array from a list, the list has to have 2 nested lists within it. (a list of lists of lists)
+
+* Since our data was read-in in string format, All the pixels in each row of our image data is stored as a string value which contains pixels seperated by a space as a delimiter. i.e. for row 1 in image 1 we have '2, 6, 184 .... 1, 10, 151'
+* Remember, each pixel is represented by three comma-separated values denoting the Blue, Green, and Red components (3 colour channels) respectively. The first pixel in the first row of the first image is '2,6,184'
+* I needed to store each pixel in it's own list, and then each row will contain all the pixels in that row in a single list, and then all the rows in that image will be stored in another single list.
+E.g. The first image has 418 rows, and 870 pixels per row. Each 870 pixels per row will stored in seperate lists i.e. we will have 870 lists in each row, and then each 418 rows containing 870 lists each which will be stored in a single list. And that way we have a list of lists (418 lists) of lists(870 lists). i.e. the first row of the first image should look like: [[2, 6, 184] ... [1, 10, 151]]

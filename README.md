@@ -18,12 +18,12 @@ Output a single integer, the number of faces spotted in the provided image.
 
 ## Solution
 ### Discuss in detail how you solved the problem.
-* Note that I also explained in details the solution to the task in the notebook, so you can follow the explanation better there since you can see the programs and the explanation at the same time.
+* Note that I also discussed in details the solution to the task inside the notebook itself alongside the code., so you can follow the explanation better there since you can see the programs/code and the explanation at the same time.
 
 
 * The task is to count the number of faces in particular images, I was provided with 3 images that have been converted to 2D grids of pixel values. The 2D grid of pixel value of each image was provided in seperate text files.
-* To count the number of faces in each image, I had to first convert each image back to it's image form or array form before it can be usable on any deep learning or machine learning model.
-* The first thing I did was to read in the image data of each image into my notebook, using Python's function, 'open()'. Using this function, I read in image data from each text file line by line. I created 3 different lists for each image data named: 'img1', 'img2' and 'img3'.
+To count the number of faces in each image, I had to first convert each image back to it's image form or array form before it can be usable on any deep learning or machine learning model.
+The first thing I did was to read in the image data of each image into my notebook, using Python's function, 'open()'. Using this function, I read in image data from each text file line by line. I created 3 different lists for each image data named: 'img1', 'img2' and 'img3'.
 
 
 * The image data I read in was read in regular text format, so I had to convert it back into it's original image format (The images were originally in JPG or PNG formats). Then I will build a model to detect the number of faces in each image.
@@ -59,7 +59,7 @@ Output a single integer, the number of faces spotted in the provided image.
 E.g. The first image has 418 rows, and 870 pixels per row. Each 870 pixels per row will stored in seperate lists i.e. we will have 870 lists in each row, and then each 418 rows containing 870 lists each which will be stored in a single list. And that way we have a list of lists (418 lists) of lists(870 lists). i.e. the first row of the first image should look like: [[2, 6, 184] ... [1, 10, 151]]
 
 
-* Then I wrote a function, 'clean_image_data_list' to clean all the image data, i.e remove unwanted space, put them in the wanted format, etc.
+* Then I wrote a function, **'clean_image_data_list'** to clean all the image data, i.e remove unwanted space, put them in the wanted format, etc.
 * After which I checked to make sure I still had the same number of rows for each image data that I shoud have.
 
 
@@ -79,3 +79,28 @@ For a computer to see the world like humans, we feed it lots of image data, depe
 Here we want the computer to count the number of faces, ideally we will get lot's of human faces and feed them into a machine learning or deep learning model preferably deep learning because we get to use things like Neural Networks which can learn from hundreds of thousands of data.
 I don't have any training data for the task at hand, and getting them would take a while, so I am gonna use an a pretrained model to detect the faces in each of our pictures.
 The pretrained model I am going to use is the Multitask Cascaded Convolutional Neural Network (mtcnn)
+
+#### Face Detection using the Multitask Cascaded Convolutional Neural Network (mtcnn)
+* The MTCNN is popular because it achieved then state-of-the-art results on a range of benchmark datasets, and because it is capable of also recognizing other facial features such as eyes and mouth, called landmark detection.
+
+* The network uses a cascade structure with three networks; first the image is rescaled to a range of different sizes (called an image pyramid), then the first model (Proposal Network or P-Net) proposes candidate facial regions, the second model (Refine Network or R-Net) filters the bounding boxes, and the third model (Output Network or O-Net) proposes facial landmarks.
+* The model is called a multi-task network because each of the three models in the cascade (P-Net, R-Net and O-Net) are trained on three tasks, e.g. make three types of predictions; they are: face classification, bounding box regression, and facial landmark localization.
+
+* The MTCNN module is very easy to use: I created an instance of the model/network using the default weights. The default weights are the weighs gotten from the training data used to train this model, I can add the weights of my own training data if I have any which I don't, so I used the default weights.
+Then applied the images to the model. I created a function **'detect_faces'** for this.
+Then I created another function **'draw_image_with_boxes'** to see the part of the image the model detected as faces, and to make sure it detected the right thing.
+Then I applied both functions to the images, and printed out the number of faces in each image. all of which the model got right.
+
+
+* The  first picture has 2 faces in it
+* The second picture has 3 faces in it, and 
+* The third image has 5 faces in it.
+
+
+
+
+
+
+
+
+s to the 3 images and printed out a single integer value, the number of faces in each image.
